@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block title %}
+  Employees List
+{% endblock %}
+{% block content %}
+  <main class="flex-1 p-6">
+    <div class="p-6">
+      <!-- Page Header -->
+      <div class="flex gap-3 justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Employee List</h1>
+        <a href="{% url 'add_employee' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">+ Add Employee</a>
+      </div>
+
+      <!-- Employee Table -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-200 bg-white rounded-lg shadow">
+          <thead class="bg-gray-100 border-b">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">ID</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Name</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Role</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for emp in employees %}
+              <tr class="border-b hover:bg-gray-50">
+                <td class="px-6 py-3 text-sm text-gray-800">{{ emp.id }}</td>
+                <td class="px-6 py-3 text-sm text-gray-800">{{ emp.get_full_name|default:emp.username }}</td>
+                <td class="px-6 py-3 text-sm text-gray-800">{{ emp.email }}</td>
+                <td class="px-6 py-3 text-sm text-gray-800">
+                  {% if emp.is_staff %}
+                    Manager
+                  {% else %}
+                    Employee
+                  {% endif %}
+                </td>
+                <td class="px-6 py-3 text-sm text-gray-800 flex gap-2">
+                  <a href="{% url 'attendance:employee_detail' emp.id %}" class="text-blue-600 hover:underline">View</a>
+                  <a href="{% url 'attendance:edit_employee' emp.id %}" class="text-green-600 hover:underline">Edit</a>
+                  <a href="{% url 'attendance:delete_employee' emp.id %}" class="text-red-600 hover:underline" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a>
+                </td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="5" class="px-6 py-4 text-center text-gray-500">No employees found.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+{% endblock %}

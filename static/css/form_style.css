@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(230, 222, 222);
+    /* Dark background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    margin: auto;
+    position: relative;
+    /* Position relative for absolute positioning of back icon */
+}
+
+h2 {
+    text-align: center;
+    color: #0d0b30;
+    /* Gold color */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #0d0b30;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #0d0b30;
+    /* Gold color on focus */
+    outline: none;
+}
+
+button {
+    background-color: #0d0b30;
+    /* Gold color */
+    color: #e4e4e4;
+    /* Dark text */
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #221e6e;
+    /* Lighter gold on hover */
+}
+
+.message {
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ebccd1;
+}
+
+.back-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: black;
+    /* Changed back icon color to black */
+    cursor: pointer;
+}

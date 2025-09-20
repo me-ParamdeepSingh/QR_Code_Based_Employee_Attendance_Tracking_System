@@ -1,0 +1,62 @@
+{% extends 'layout.html' %} 
+{% block title %}
+  My Attendance
+{% endblock %}
+{% block content %}
+  <main class="flex-1 p-6">
+    <div class="p-6">
+      <!-- Page Header -->
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">My Attendance</h1>
+
+      <!-- User Info -->
+      <div class="bg-white p-4 rounded-lg shadow mb-6">
+        <p>
+          <strong>Name:</strong> {{ request.user.username }}
+        </p>
+        <p>
+          <strong>Email:</strong> {{ request.user.email }}
+        </p>
+      </div>
+
+      <!-- Attendance Table -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4">Attendance Records</h2>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto border-collapse border border-gray-200">
+            <thead>
+              <tr class="bg-gray-100 text-left">
+                <th class="border border-gray-200 px-4 py-2">Date</th>
+                <th class="border border-gray-200 px-4 py-2">Check-In</th>
+                <th class="border border-gray-200 px-4 py-2">Check-Out</th>
+                <th class="border border-gray-200 px-4 py-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for record in attendance_records %}
+                <tr class="hover:bg-gray-50">
+                  <td class="border border-gray-200 px-4 py-2">{{ record.date }}</td>
+                  <td class="border border-gray-200 px-4 py-2">{{ record.check_in_time|default:'--' }}</td>
+                  <td class="border border-gray-200 px-4 py-2">{{ record.check_out_time|default:'--' }}</td>
+                  <td class="border border-gray-200 px-4 py-2">
+                    {% if record.check_in_time and record.check_out_time %}
+                      <span class="text-green-600 font-semibold">Present</span>
+                    {% elif record.check_in_time %}
+                      <span class="text-yellow-600 font-semibold">Checked In</span>
+                    {% else %}
+                      <span class="text-red-600 font-semibold">Absent</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="4" class="text-center py-4 text-gray-500">No attendance records found.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

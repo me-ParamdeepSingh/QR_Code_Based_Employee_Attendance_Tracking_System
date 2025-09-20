@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block title %}Export Report{% endblock %}
+{% block content %}
+<main class="flex-1 p-6">
+<div class="p-6">
+
+  <!-- Page Header -->
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Export Attendance Report</h1>
+
+  <!-- Export Form -->
+  <form method="get" action="{% url 'export_report' %}" 
+        class="bg-white p-6 rounded-lg shadow space-y-6">
+  
+    <!-- Filters Row -->
+    <div class="flex flex-wrap gap-6">
+
+      <!-- Employee Filter -->
+      <div>
+        <label for="employee" class="block text-gray-700 font-medium">Employee:</label>
+        <select name="employee" id="employee" 
+                class="border border-gray-300 rounded px-3 py-2 w-48">
+          <option value="">All</option>
+          {% for emp in employees %}
+            <option value="{{ emp.id }}" {% if request.GET.employee == emp.id|stringformat:"s" %}selected{% endif %}>
+              {{ emp.username }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Date From -->
+      <div>
+        <label for="from_date" class="block text-gray-700 font-medium">From:</label>
+        <input type="date" name="from_date" id="from_date" value="{{ request.GET.from_date }}"
+               class="border border-gray-300 rounded px-3 py-2 w-48">
+      </div>
+
+      <!-- Date To -->
+      <div>
+        <label for="to_date" class="block text-gray-700 font-medium">To:</label>
+        <input type="date" name="to_date" id="to_date" value="{{ request.GET.to_date }}"
+               class="border border-gray-300 rounded px-3 py-2 w-48">
+      </div>
+
+      <!-- Status -->
+      <div>
+        <label for="status" class="block text-gray-700 font-medium">Status:</label>
+        <select name="status" id="status" 
+                class="border border-gray-300 rounded px-3 py-2 w-48">
+          <option value="">All</option>
+          <option value="present" {% if request.GET.status == "present" %}selected{% endif %}>Present</option>
+          <option value="checked_in" {% if request.GET.status == "checked_in" %}selected{% endif %}>Checked In</option>
+          <option value="absent" {% if request.GET.status == "absent" %}selected{% endif %}>Absent</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Export Buttons -->
+    <div class="flex gap-4">
+      <button type="submit" name="format" value="csv"
+              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">
+        Export CSV
+      </button>
+      <button type="submit" name="format" value="xlsx"
+              class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">
+        Export Excel
+      </button>
+      <button type="submit" name="format" value="pdf"
+              class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500">
+        Export PDF
+      </button>
+    </div>
+  </form>
+</div>
+</main>
+{% endblock %}

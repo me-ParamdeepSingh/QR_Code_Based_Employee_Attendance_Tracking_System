@@ -1,0 +1,84 @@
+/* body{
+    background-color: rgb(2, 0, 37);
+}
+
+h1{
+    color: white;
+    text-align: center;
+} */
+
+/* .login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    position: relative;
+    /* Position relative for absolute positioning of back icon */
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #FFD700;
+    /* Gold color on focus */
+    outline: none;
+}
+
+button {
+    background-color: #FFD700;
+    /* Gold color */
+    color: #121212;
+    /* Dark text */
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #FFC107;
+    /* Lighter gold on hover */
+}
+
+.message {
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ebccd1;
+}
+
+.back-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: black;
+    /* Changed back icon color to black */
+    cursor: pointer;
+} */

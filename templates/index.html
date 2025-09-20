@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block title %} Home Page {% endblock %} 
+{% block content %}
+<main class="flex-1 p-6">
+  <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+
+  <!-- Example Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold">Total Employees</h2>
+      <p class="mt-2 text-3xl font-bold text-blue-600">25</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold">Today’s Check-ins</h2>
+      <p class="mt-2 text-3xl font-bold text-green-600">18</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold">Pending Check-outs</h2>
+      <p class="mt-2 text-3xl font-bold text-red-600">7</p>
+    </div>
+  </div>
+</main>
+{% endblock %}
